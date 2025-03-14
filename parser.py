@@ -2,13 +2,16 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+class DefaultError(Exception):
+    pass
+
 def parse(game="dead-cells") -> list:
     # Vars
     link = f"https://howlongtoplay.ru/games/{game}"
     response = requests.get(link)
     # print(response)
     if f"{response}" != "<Response [200]>":
-        return ["Error"]
+        raise DefaultError("Error")
     text_from_page = response.text
     soup = BeautifulSoup(text_from_page, 'html.parser')
 
