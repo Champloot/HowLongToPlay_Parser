@@ -6,12 +6,9 @@ def parse(game="dead-cells") -> list:
     # Vars
     link = f"https://howlongtoplay.ru/games/{game}"
     response = requests.get(link)
-    print(response)
+    # print(response)
     if f"{response}" != "<Response [200]>":
         return ["Error"]
-    #response_status = response.status_code
-    #if not response_status:
-    #    return 0
     text_from_page = response.text
     soup = BeautifulSoup(text_from_page, 'html.parser')
 
