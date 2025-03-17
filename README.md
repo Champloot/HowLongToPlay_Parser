@@ -12,7 +12,7 @@
 
 ```bash
 python main.py -g "Название Игры"
-
+```
 markdown
 Пример: python main.py -g "Dead Cells"
 
