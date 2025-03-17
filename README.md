@@ -5,24 +5,25 @@
 ## Установка
 
 1. Склонируйте репозиторий:
-      git clone <URL_репозитория>
-   cd <папка_проекта>
+
+            git clone <URL_репозитория>
+            cd <папка_проекта>
    
 
-2. Установите необходимые библиотеки:
-      pip install requests beautifulsoup4
-   
+3. Установите необходимые библиотеки:
+
+            pip install -r requirements.txt
 
 ## Использование
 
 Запустите скрипт main.py с указанием названия игры:
 
-python main.py -g "название_игры"
+      python main.py -g "название_игры"
 
 
 ## Пример
 
-python main.py -g "Dead Cells"
+      python main.py -g "Dead Cells"
 
 
 ## Исключения
