@@ -1,70 +1,70 @@
 # HowLongToPlay Parser
 
-This script retrieves estimated game completion times from the howlongtoplay.ru website. It provides estimates for the main campaign, campaign plus additional tasks, and a full playthrough.
+Этот скрипт получает оценку времени прохождения игр с сайта howlongtoplay.ru. Он предоставляет оценки для основной кампании, кампании с дополнительными заданиями и полного прохождения игры.
 
-## Prerequisites
+## Необходимые условия
 
 *   Python 3.6+
-*   `requests` library:  `pip install requests`
-*   `beautifulsoup4` library: `pip install beautifulsoup4`
+*   Библиотека `requests`:  `pip install requests`
+*   Библиотека `beautifulsoup4`: `pip install beautifulsoup4`
 
-## Installation
+## Установка
 
-1.  Clone the repository or download the script files (`main.py` and `parser.py`).
+1.  Склонируйте репозиторий или скачайте файлы скрипта (`main.py` и `parser.py`).
 
-## Usage
+## Использование
 
-The script is executed from the command line, providing the game name as an argument.
+Скрипт запускается из командной строки, с указанием названия игры в качестве аргумента.
 
 ```bash
-python main.py -g "Game Name"
-# or
-python main.py --game "Game Name"
+python main.py -g "Название Игры"
+# или
+python main.py --game "Название Игры"
 
 markdown
-Replace "Game Name" with the name of the game you want to search for. The game name should be similar to how it’s listed on howlongtoplay.ru for the best results.
+Замените "Название Игры" на название игры, которую вы хотите найти. Название игры должно быть похоже на то, как оно указано на howlongtoplay.ru, для получения наилучших результатов.
 
-Example:
+Пример:
 
 python main.py -g "Dead Cells"
 
 bash
-This will output the estimated completion times for Dead Cells.
+Это выведет оценку времени прохождения для Dead Cells.
 
-Output
-The script will print the estimated game completion times in the following format:
+Вывод
+Скрипт выведет оценку времени прохождения игры в следующем формате:
 
-Main campaign:                  Xh. Ym.
-Campaign + additional tasks:    Ah. Bm.
-Full playthrough:               Ch. Dm.
+Основная кампания:                  Xч. Yм.
+Кампания + дополнительные задания:    Aч. Bм.
+Полное прохождение:               Cч. Dм.
 
-Where X, Y, A, B, C, and D are the estimated hours and minutes.
+Где X, Y, A, B, C и D - это предполагаемые часы и минуты.
 
-Error Handling
-If the script encounters an error (e.g., the game is not found on howlongtoplay.ru), it will print the message:
+Обработка ошибок
+Если скрипт сталкивается с ошибкой (например, игра не найдена на howlongtoplay.ru), он выведет сообщение:
 
-Something went wrong
+Что-то пошло не так
 
-Script Details
-main.py: This is the main script that parses the command-line arguments, calls the parse function from parser.py, and prints the results. It handles user input and error reporting.
-parser.py: This script contains the parse function, which fetches the data from howlongtoplay.ru, parses the HTML using BeautifulSoup, and extracts the estimated completion times. It uses the requests library to make HTTP requests and beautifulsoup4 to parse the HTML. It also defines a custom exception DefaultError for handling errors during parsing.
-Code Explanation
+Детали скрипта
+main.py: Это основной скрипт, который разбирает аргументы командной строки, вызывает функцию parse из parser.py и выводит результаты. Он обрабатывает ввод пользователя и сообщает об ошибках.
+parser.py: Этот скрипт содержит функцию parse, которая получает данные с howlongtoplay.ru, разбирает HTML с помощью BeautifulSoup и извлекает оценку времени прохождения. Он использует библиотеку requests для выполнения HTTP-запросов и beautifulsoup4 для разбора HTML. Он также определяет пользовательское исключение DefaultError для обработки ошибок во время разбора.
+Объяснение кода
 main.py:
 
-Uses optparse to handle command-line arguments (specifically the -g or --game option).
-Converts the game name to lowercase.
-Replaces digits in the game name with repeated ‘i’ characters (this is a specific handling of the website requirements). For example “diablo4” becomes “diabloiiii”.
-Calls the parse() function from parser.py with the corrected game name.
-Prints the formatted output.
-Catches the DefaultError exception if something goes wrong during the parsing process.
+Использует optparse для обработки аргументов командной строки (в частности, опцию -g или --game).
+Преобразует название игры в нижний регистр.
+Заменяет цифры в названии игры на повторы символа ‘i’ (это специфичная обработка для соответствия требованиям сайта). Например, “diablo4” становится “diabloiiii”.
+Вызывает функцию parse() из parser.py с исправленным названием игры.
+Выводит отформатированный вывод.
+Перехватывает исключение DefaultError, если что-то пошло не так во время разбора.
 parser.py:
 
-Constructs the URL for howlongtoplay.ru based on the provided game name.
-Makes an HTTP request to the URL using the requests library.
-Checks if the response status code is 200 (OK). If not, raises a DefaultError.
-Parses the HTML content using BeautifulSoup with the html.parser.
-Locates the relevant div elements containing the time estimates.
-Extracts the numerical values (hours and minutes) from the text of these div elements using regular expressions.
-Returns a list containing the extracted time estimates for the main campaign, campaign plus additional tasks, and full playthrough.
-Note on Website Usage
-Please use this script responsibly and avoid excessive requests to the howlongtoplay.ru website. Too many requests in a short period might be interpreted as abuse and could result in your IP address being blocked. Consider adding delays between requests if you plan to use the script for multiple lookups. “`
+Строит URL-адрес для howlongtoplay.ru на основе предоставленного названия игры.
+Делает HTTP-запрос к URL-адресу с помощью библиотеки requests.
+Проверяет, равен ли код состояния ответа 200 (OK). Если нет, вызывает DefaultError.
+Разбирает HTML-контент с помощью BeautifulSoup с парсером html.parser.
+Находит соответствующие элементы div, содержащие оценки времени.
+Извлекает числовые значения (часы и минуты) из текста этих элементов div с помощью регулярных выражений.
+Возвращает список, содержащий извлеченные оценки времени для основной кампании, кампании с дополнительными заданиями и полного прохождения.
+Примечание об использовании веб-сайта
+Пожалуйста, используйте этот скрипт ответственно и избегайте чрезмерных запросов к веб-сайту howlongtoplay.ru. Слишком много запросов за короткий период времени может быть расценено как злоупотребление и может привести к блокировке вашего IP-адреса. Рассмотрите возможность добавления задержек между запросами, если вы планируете использовать скрипт для многократного поиска. “`
