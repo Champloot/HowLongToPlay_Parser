@@ -6,13 +6,13 @@
 
 1. Склонируйте репозиторий:
 
-            git clone <URL_репозитория>
-            cd <папка_проекта>
-   
+      git clone <URL_репозитория>
+      cd <папка_проекта>
+
 
 3. Установите необходимые библиотеки:
 
-            pip install -r requirements.txt
+      pip install -r requirements.txt
 
 ## Использование
 
