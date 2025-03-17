@@ -28,11 +28,11 @@
 
 ## Пример вывода
 
-`Main campaign: 24h. 30m.`
+`Main campaign: 14h. 59m.`
 
-`Campaign + additional tasks: 35h. 0m.`
+`Campaign + additional tasks: 27h. 48m.`
 
-`Full playthrough: 52h. 30m.`
+`Full playthrough: 64h. 49m.`
 
 
 ## Ошибки
