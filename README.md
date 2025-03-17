@@ -29,7 +29,9 @@
 ## Пример вывода
 
 `Main campaign: 24h. 30m.`
+
 `Campaign + additional tasks: 35h. 0m.`
+
 `Full playthrough: 52h. 30m.`
 
 
