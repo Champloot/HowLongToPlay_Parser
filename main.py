@@ -11,7 +11,7 @@ if __name__ == "__main__":
     (option, arguments) = console_option_parser.parse_args()
     default_game_name : str = option.game
 
-    correct_game_name = default_game_name.lower()
+    correct_game_name = default_game_name.lower().replace(' ', '-').replace('_', '-')
 
     for i in range(len(correct_game_name)):
         if correct_game_name[i].isdigit():
