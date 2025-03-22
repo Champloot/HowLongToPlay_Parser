@@ -21,13 +21,14 @@ def parse(game_code: int = 45727) -> list:
 
     blocks = soup.find_all('li', class_="GameStats_short__tSJ6I time_100")
     info_from_blocks = [i.text for i in blocks]
-
-    for time in info_from_blocks:
-        current_time = re.findall(r'\d+', time)
-        print(current_time)
+    ans = []
+    for time in info_from_blocks[:-1]:
+        current_time = re.findall(r'\d+½?', time)[0].replace('½', '.5')
+        ans.append(current_time)
+    return ans
 
 def prepare_to_parse(key_word: str = 'Dead cells') -> int:
     pass
 
 
-parse()
+print(parse())
