@@ -1,6 +1,6 @@
+from fake_useragent import UserAgent
 import requests
 from bs4 import BeautifulSoup
-from fake_useragent import UserAgent
 import re
 
 
@@ -30,5 +30,4 @@ def parse(game_code: int = 45727) -> list:
 def prepare_to_parse(key_word: str = 'Dead cells') -> int:
     pass
 
-
-print(parse())
+# print(parse(45727))
