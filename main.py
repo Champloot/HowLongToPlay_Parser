@@ -2,7 +2,8 @@ import optparse
 import json
 from another_parser import DefaultError, parse
 
-def json_operation(game_name, code = None):
+
+def json_operation(game_name, code=None):
     try:
         with open('data.json', 'r') as file:
             data = json.load(file)
@@ -26,7 +27,7 @@ if __name__ == "__main__":
                                      dest="game",
                                      help="Name of game")
     (option, arguments) = console_option_parser.parse_args()
-    game_name : str = option.game
+    game_name: str = option.game
     game_id = json_operation(game_name)
     try:
         ans_from_parser = parse(game_id)
