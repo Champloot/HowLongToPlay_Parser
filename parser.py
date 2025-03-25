@@ -2,8 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
+
 class DefaultError(Exception):
     pass
+
 
 def parse(game="dead-cells") -> list:
     # Vars
